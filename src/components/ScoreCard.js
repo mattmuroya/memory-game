@@ -1,16 +1,16 @@
-function CurrentScoreDisplay() {
-  return <div>current score</div>
+function HighScoreDisplay({ highScore }) {
+  return <div>Best Score: {highScore}</div>
 }
 
-function BestScoreDisplay() {
-  return <div>best score</div>
+function CurrentScoreDisplay({ currentScore }) {
+  return <div>Current Score: {currentScore}</div>
 }
 
-export default function ScoreCard() {
+export default function ScoreCard({ highScore, currentScore }) {
   return (
     <div className="score-card">
-      <CurrentScoreDisplay />
-      <BestScoreDisplay />
+      <HighScoreDisplay highScore={highScore} />
+      <CurrentScoreDisplay currentScore={currentScore} />
     </div>
   )
 };
