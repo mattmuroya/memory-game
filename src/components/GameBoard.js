@@ -3,20 +3,34 @@ function Tile(props) {
   const classes = `tile ${props.color}`
 
   return (
-    <div className={classes}>
+    <div
+      data-index={props.index}
+      id={props.color}
+      className={classes}
+      onClick={props.clickHandler}
+    >
       {props.content}
     </div>
   )
 }
 
-export default function GameBoard({ tileArray }) {
+export default function GameBoard(props) {
 
-  const arr = tileArray;
+  const arr = props.tileArray;
 
   return (
-    <div className="game-board">
+    <div id="game-board" className="game-board">
       {
-        arr.map((element) => <Tile key={element} color={element.color} content={element.color} />)
+        arr.map((element, index) => {
+          return (
+            <Tile
+              key={index}
+              index={index}
+              color={element.color}
+              content={element.color}
+              clickHandler={props.clickHandler} />
+          );
+        })
       }
     </div>
   )

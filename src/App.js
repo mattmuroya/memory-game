@@ -7,46 +7,81 @@ import GameBoard from './components/GameBoard';
 
 function App() {
 
-  const [highScore, setHighScore] = useState(0);
-  const [currentScore, setCurrentScore] = useState(0);
-  const [tileArray, setTileArray] = useState([
+  const defaultArray = [
     {
       color: 'red',
-      clicked: false,
+      isClicked: false,
     },
     {
       color: 'green',
-      click: false,
+      isClicked: false,
     },
     {
       color: 'blue',
-      clicked: false,
+      isClicked: false,
     },
     {
       color: 'yellow',
-      clicked: false,
+      isClicked: false,
     },
     {
       color: 'purple',
-      clicked: false,
+      isClicked: false,
     },
     {
       color: 'orange',
-      clicked: false,
+      isClicked: false,
     },
     {
       color: 'teal',
-      clicked: false,
+      isClicked: false,
     },
     {
       color: 'pink',
-      clicked: false,
+      isClicked: false,
     },
     {
       color: 'black',
-      clicked: false,
+      isClicked: false,
     },
-  ]);
+  ]
+
+  const [highScore, setHighScore] = useState(0);
+  const [currentScore, setCurrentScore] = useState(0);
+  const [tileArray, setTileArray] = useState([...defaultArray]);
+
+  useEffect(() => { // every time tileArray updates check if won
+    if (tileArray.every((element) => element.isClicked)) {
+      alert ('you win!');
+      resetTiles();
+    }
+  }, [tileArray]);
+
+  function hasBeenClicked(e) {
+    const clickedTile = tileArray.find(element => element.color === e.target.id);
+    return clickedTile.isClicked;
+  }
+
+  function shuffleTiles() {
+    const newArray = tileArray;
+    setTileArray([...newArray.sort(() => (Math.random() > .5) ? 1 : -1)]);
+  }
+
+  function resetTiles() {
+    setTileArray([...defaultArray]);
+  }
+
+  function handleClick(e) {
+    if (hasBeenClicked(e)) {
+      alert('u loser');
+      resetTiles();
+    } else {
+      const newTileArray = tileArray;
+      newTileArray[e.target.dataset.index].isClicked = true;
+      setTileArray([...newTileArray]);
+      shuffleTiles();
+    }
+  }
 
   return (
     <div className="container">
@@ -56,7 +91,7 @@ function App() {
           highScore={highScore}
           currentScore={currentScore}
         />
-        <GameBoard tileArray={tileArray} />
+        <GameBoard tileArray={tileArray} clickHandler={handleClick}/>
       </main>
     </div>
   );
