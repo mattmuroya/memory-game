@@ -54,6 +54,7 @@ function App() {
     if (tileArray.every((element) => element.isClicked)) {
       alert ('you win!');
       resetTiles();
+      setCurrentScore(0);
     }
   }, [tileArray]);
 
@@ -74,8 +75,13 @@ function App() {
   function handleClick(e) {
     if (hasBeenClicked(e)) {
       alert('u loser');
+      setCurrentScore(0);
       resetTiles();
     } else {
+      if (currentScore + 1 > highScore) {
+        setHighScore(currentScore + 1);
+      }
+      setCurrentScore(currentScore + 1);
       const newTileArray = tileArray;
       newTileArray[e.target.dataset.index].isClicked = true;
       setTileArray([...newTileArray]);

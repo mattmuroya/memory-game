@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 function HighScoreDisplay({ highScore }) {
   return <div>Best Score: {highScore}</div>
 }
@@ -7,6 +9,8 @@ function CurrentScoreDisplay({ currentScore }) {
 }
 
 export default function ScoreCard({ highScore, currentScore }) {
+
+  
   return (
     <div className="score-card">
       <HighScoreDisplay highScore={highScore} />
