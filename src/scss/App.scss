@@ -35,6 +35,48 @@ main {
 }
 
 .tile {
-  border: solid 1px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
   aspect-ratio: 1 / 1;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  color: black;
+  background-color: rgb(29, 204, 29);
+}
+
+.blue {
+  background-color: blue;
+}
+
+.yellow {
+  background-color: yellow;
+  color: black;
+}
+
+.purple {
+  background-color: rgb(104, 19, 104);
+}
+
+.orange {
+  background-color: rgb(255, 123, 0);
+  color: black;
+}
+
+.teal {
+  background-color: teal;
+}
+
+.pink {
+  background-color: rgb(233, 61, 196);
+}
+
+.black {
+  background-color: black;
 }

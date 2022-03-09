@@ -9,7 +9,44 @@ function App() {
 
   const [highScore, setHighScore] = useState(0);
   const [currentScore, setCurrentScore] = useState(0);
-  const [tileArray, setTileArray] = useState([0,1,2,3,4,5,6,7,8]);
+  const [tileArray, setTileArray] = useState([
+    {
+      color: 'red',
+      clicked: false,
+    },
+    {
+      color: 'green',
+      click: false,
+    },
+    {
+      color: 'blue',
+      clicked: false,
+    },
+    {
+      color: 'yellow',
+      clicked: false,
+    },
+    {
+      color: 'purple',
+      clicked: false,
+    },
+    {
+      color: 'orange',
+      clicked: false,
+    },
+    {
+      color: 'teal',
+      clicked: false,
+    },
+    {
+      color: 'pink',
+      clicked: false,
+    },
+    {
+      color: 'black',
+      clicked: false,
+    },
+  ]);
 
   return (
     <div className="container">
